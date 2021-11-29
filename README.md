@@ -2,13 +2,14 @@
 The code of this repository is an unofficial python project meant as a learning experience and not as a submitted answer to the 2015 kaggle challenge [West Nile Virus Prediction](https://www.kaggle.com/c/predict-west-nile-virus/overview).
 
 Its objectives are twofold:
--The primary goal is leveraging feature engineering to gain further insights of the dataset, aid selection of an ML prediction algorithm and to improve the performance of said algorithm.
--The secondary goal is to perform a basic implementation of a prediction algorithm to evaluate and explain findings from the prior feature engineering.
+
+- The primary goal is leveraging feature engineering to gain further insights of the dataset, aid selection of an ML prediction algorithm and to improve the performance of said algorithm.
+- The secondary goal is to perform a basic implementation of a prediction algorithm to evaluate and explain findings from the prior feature engineering.
 
 The original Kaggle challenge provides weather-, testing- and spray data from mosquitos in the Chicago area. This can be used to predict when and where different mosquito species will test positive for West Nile Virus. Better prediction models would greatly alleviate the city of Chicago and their health departments in their efforts to stop the spread of this deadly virus.
 
 ## Prerequisites
-- python 3.10
+- python 3.9
 - numpy 1.21
 - matplotlib 3.5
 
