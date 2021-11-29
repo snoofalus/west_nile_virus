@@ -52,5 +52,8 @@ Several files where _dataset_ is replaced with the name of specific datasets use
 
 ## References
 ```
-Department of Public Health, Chicago (2015, April). West Nile Virus Prediction. Retrieved November 28, 2021 from https://www.kaggle.com/c/predict-west-nile-virus/data.
+Department of Public Health, Chicago (2015, April). 
+West Nile Virus Prediction. 
+Retrieved November 28, 2021 from 
+https://www.kaggle.com/c/predict-west-nile-virus/data.
 ```
