@@ -21,10 +21,10 @@ The original Kaggle challenge provides weather-, testing- and spray data from mo
 The model expects the following folder:  
 A datafolder @ src/data
 
-and files:
-Training dataset @ src/data/train.csv
-Test dataset @ src/data/test.csv
-GIS data of spraying in 2011 and 2013 @ src/data/spray.csv
+and files:  
+Training dataset @ src/data/train.csv  
+Test dataset @ src/data/test.csv  
+GIS data of spraying in 2011 and 2013 @ src/data/spray.csv  
 Weather data from 2007 to 2014 @ src/data/weather.csv
 
 
