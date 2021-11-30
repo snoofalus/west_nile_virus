@@ -1,4 +1,5 @@
 src/data
+src/test
 src/unzipped_archive
 dataset/__pycache__
 
