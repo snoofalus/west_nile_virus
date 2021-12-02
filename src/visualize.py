@@ -91,6 +91,9 @@ def main():
 	df_xy_train['Trap'] = le.fit_transform(df_xy_train['Trap'])
 	#print(x_train['Trap'].value_counts())
 
+	#plot sample after feature engineering
+	plot_and_save_sample(df_xy_train, 42, image_dir, 'after_fe_sample')
+
 	#Create descriptory images
 	#
 	###-------------------------------------------------------------------------
