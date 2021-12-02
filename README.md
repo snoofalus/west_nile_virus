@@ -28,35 +28,33 @@ GIS data of spraying in 2011 and 2013 @ src/data/spray.csv
 Weather data from 2007 to 2014 @ src/data/weather.csv
 
 
-The model can then be run with default arguments as
-```python
-python main.py 
+The visualization and data exploraton can then be run by
+```python 
+python visualize.py 
 ```
-to show descriptions and save description images from the dataset.
+to show descriptions and save descriptory images from the dataset.
 
-Alternatively add train mode with [rforest] or [neural]
+Afterwards run the main-file with train mode and [rforest] or [neural]
 ```python
-python main.py --train-mode neural
+python main.py --train-mode neural --predictor neural
 ```
 to train a predictor model on the dataset and calculate training and validation accuracy.
 
-Try out different datasets and change hyperparameters in the main-file arg parser or through cmd-line as shown below 
-```python
-python train.py --train-mode --learning-rate 0.01 --dataset wnile
-```
-
-##List of files
+## List of files
 "main.py" 
-Main file used for choosing hyperparameters, prediction model and run feature engineering
+Main file used for choosing hyperparameters, prediction model
+
+"visualize.py"
+Used for data exploration methods
 
 "functions.py"
-Functions used to perform random forest, evaluate accuracy and other metrics 
+Helper functions used to perform random forest, evaluate accuracy, create data loggers, etc.
+
+"architectures/networks"
+Architectures used for neural net models.
 
 "dataset/custom_datasets.py"
-Two custom pytorch dataset objects for loading images and masks.
-
-"dataset/_dataset_.py"
-Several files where _dataset_ is replaced with the name of specific datasets used for calling the dataloader objects and potentially use normalization and/or image transforms. Add your own following existing layout to use it on your own datasets. 
+Custom dataloader and dataset classes for neural models
 
 ## References
 ```
