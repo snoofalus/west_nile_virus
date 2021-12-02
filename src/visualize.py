@@ -8,7 +8,7 @@ import timeit
 #data
 import numpy as np
 import pandas as pd
-from sklearn import preprocessing, ensemble, model_selection, decomposition
+from sklearn import preprocessing, ensemble, model_selection, decomposition, manifold
 
 #plotting
 import seaborn as sns
@@ -123,7 +123,7 @@ def main():
 
 	df_x_train = df_xy_train.drop(['WnvPresent'], axis=1)
 
-	#pca
+	#TODO pca
 	pca = decomposition.PCA(n_components=2)
 	pc = pca.fit_transform(df_x_train)
 	df_pc = pd.DataFrame(data = pc
@@ -131,26 +131,39 @@ def main():
 
 	df_concat = pd.concat([df_pc, df_xy_train['WnvPresent']], axis=1)
 
-	fig = plt.figure(figsize = (8,8))
-	ax = fig.add_subplot(1,1,1) 
-	ax.set_xlabel('Principal Component 1', fontsize = 15)
-	ax.set_ylabel('Principal Component 2', fontsize = 15)
-	ax.set_title('2 component PCA', fontsize = 20)
+	df_concat1 = df_concat.loc[df_concat['WnvPresent'] == 1]
+	df_concat2 = df_concat.loc[df_concat['WnvPresent'] == 0]
 
-	targets = ['0', '1', 'Iris-virginica']
-	colors = ['r', 'g', 'b']
-	for target, color in zip(targets,colors):
-		indicesToKeep = df_concat['WnvPresent'] == target
-		ax.scatter(df_concat.loc[indicesToKeep, 'pc1']
-					, df_concat.loc[indicesToKeep, 'pc2']
-					, c = color
-					, s = 50)
-	ax.legend(targets)
-	ax.grid()
+	df_concat1 = df_concat1.drop(['WnvPresent'], axis=1)
+	df_concat2 = df_concat2.drop(['WnvPresent'], axis=1)
+
+	fig = plt.figure()
+	plt.scatter(df_concat1['pc1'].values, df_concat1['pc2'].values, s=5)
+	plt.scatter(df_concat2['pc1'].values, df_concat2['pc2'].values, s=5)
+	file_name = 'pca.png'
+	file_path = os.path.join(image_dir, file_name)
+	plt.savefig(file_path, bbox_inches='tight')
 
 	#TODO t-sne
-	#fig = plt.figure()
+	tsne = manifold.TSNE(n_components=2)
+	embeddings = tsne.fit_transform(df_x_train)
+	df_embeddings = pd.DataFrame(data = embeddings
+			, columns = ['dim1', 'dim2'])
 
+	df_concat = pd.concat([df_embeddings, df_xy_train['WnvPresent']], axis=1)
+
+	df_concat1 = df_concat.loc[df_concat['WnvPresent'] == 1]
+	df_concat2 = df_concat.loc[df_concat['WnvPresent'] == 0]
+
+	df_concat1 = df_concat1.drop(['WnvPresent'], axis=1)
+	df_concat2 = df_concat2.drop(['WnvPresent'], axis=1)
+
+	fig = plt.figure()
+	plt.scatter(df_concat1['dim1'].values, df_concat1['dim2'].values, s=5)
+	plt.scatter(df_concat2['dim1'].values, df_concat2['dim2'].values, s=5)
+	file_name = 'tsne.png'
+	file_path = os.path.join(image_dir, file_name)
+	plt.savefig(file_path, bbox_inches='tight')
 
 	plt.show()
 
